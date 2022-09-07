@@ -341,6 +341,30 @@ public class Main {
         printEmployees(getEmployeesWithLessSalary(employees, salary));
     }
 
+    /*
+    Возвращает всех сотрудников с зарплатой больше числа.
+     */
+    private static Employee[] getEmployeesWithMoreSalary(Employee[] employees, int salary) {
 
+        Employee[] employeeWithLessSalary = new Employee[employees.length];
+        int index = 0;
+
+        for (Employee employee : employees) {
+
+            if (employee != null && employee.getSalary() >= salary) {
+                employeeWithLessSalary[index] = employee;
+                index++;
+            }
+        }
+
+        return employeeWithLessSalary;
+    }
+
+    /*
+    Выводит в консоль всех сотрудников с зарплатой меньше числа
+     */
+    private static void printEmployeesWithMoreSalary(Employee[] employees, int salary) {
+        printEmployees(getEmployeesWithMoreSalary(employees, salary));
+    }
 
 }
