@@ -280,6 +280,12 @@ public class Main {
         return  getAverageSalary(getEmployeesFromDepartment(employees, departmentNumber));
     }
 
+    /*
+    Индексирует зарплату на указанный процент
+     */
+    private static void indexingSalary(Employee[] employees, int percent, int departmentNumber) {
+        indexingSalary(getEmployeesFromDepartment(employees, departmentNumber), percent);
+    }
 
 
 
