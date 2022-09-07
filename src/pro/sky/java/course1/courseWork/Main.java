@@ -255,8 +255,22 @@ public class Main {
     /*
     Возвращает сотрудника с минимальной зарплатой в отделе
      */
-    private static Employee getEmployeeWithMinSalaryInDepartment(Employee[] employees, int departmentNumber) {
+    private static Employee getEmployeeWithMinSalary(Employee[] employees, int departmentNumber) {
         return getEmployeeWithMinSalary(getEmployeesFromDepartment(employees, departmentNumber));
+    }
+
+    /*
+    Возвращает сотрудника с максимальной зарплатой в отделе
+     */
+    private static Employee getEmployeeWithMaxSalary(Employee[] employees, int departmentNumber) {
+        return getEmployeeWithMaxSalary(getEmployeesFromDepartment(employees, departmentNumber));
+    }
+
+    /*
+    Возвращает сумму затрат на месяц в указанном отделе
+     */
+    private static double getMothSpending(Employee[] employees, int departmentNumber) {
+        return getMothSpending(getEmployeesFromDepartment(employees, departmentNumber));
     }
 
 }
