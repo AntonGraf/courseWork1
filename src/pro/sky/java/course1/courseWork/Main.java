@@ -231,4 +231,32 @@ public class Main {
 
     }
 
+    /*
+    Возвращает список сотрудников в указанном отделе
+     */
+    private static Employee[] getEmployeesFromDepartment(Employee[] employees, int departmentNumber) {
+
+        Employee[] employeesDepartment = new Employee[employees.length];
+        int indexEmployeesDepartment = 0;
+
+        for (Employee employee : employees) {
+
+            if (employee != null && employee.getDepartmentNumber() == departmentNumber) {
+
+                employeesDepartment[indexEmployeesDepartment] = employee;
+                indexEmployeesDepartment++;
+
+            }
+        }
+
+        return  employeesDepartment;
+    }
+
+    /*
+    Возвращает сотрудника с минимальной зарплатой в отделе
+     */
+    private static Employee getEmployeeWithMinSalaryInDepartment(Employee[] employees, int departmentNumber) {
+        return getEmployeeWithMinSalary(getEmployeesFromDepartment(employees, departmentNumber));
+    }
+
 }
