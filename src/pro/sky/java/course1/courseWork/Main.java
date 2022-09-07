@@ -72,8 +72,42 @@ public class Main {
      */
     private static void middleLevel() {
 
+        System.out.println("Курсовая повышенного уровня.");
+        System.out.println("Пункт 1");
         Employee[] employees = fillEmployees();
 
+        System.out.println("Данные сотрудников до повышения зарплат");
+        printEmployeesWithAllInfo(employees);
+
+        System.out.println("Данные сотрудников после повышения зарплат");
+        indexingSalary(employees, 10);
+        printEmployeesWithAllInfo(employees);
+
+        System.out.println("======================");
+        System.out.println("Пункт 2");
+
+        int departmentNumber = 5;
+        System.out.println("Данные по отделу №" + departmentNumber);
+
+        System.out.println("Сотрудник с минимальной зарплатой: " + getEmployeeWithMinSalary(employees,
+                departmentNumber));
+        System.out.println("Сотрудник с максимальной зарплатой: " + getEmployeeWithMaxSalary(employees,
+                departmentNumber));
+        System.out.printf("Сумма затрат в месяц: %.2f\n", getMothSpending(employees, departmentNumber));
+        System.out.printf("Средняя зарплата: %.2f\n", getAverageSalary(employees, departmentNumber));
+        System.out.println("Данные сотрудников после повышения зарплат");
+        indexingSalary(employees, 5, departmentNumber);
+        printEmployeesWithAllInfo(employees, departmentNumber);
+
+        System.out.println("======================");
+        System.out.println("Пункт 3");
+
+        double salary = 106_000;
+        System.out.printf("Список сотрудников с зарплатой ниже %.2f:\n", salary);
+        printEmployeesWithLessSalary(employees, salary);
+
+        System.out.printf("Список сотрудников с зарплатой выше %.2f:\n", salary);
+        printEmployeesWithMoreSalary(employees, salary);
     }
 
     /*
@@ -225,7 +259,7 @@ public class Main {
         for (Employee employee : employees) {
 
             if (employee != null) {
-                employee.setSalary(employee.getSalary() * percent / 100);
+                employee.setSalary(employee.getSalary() + employee.getSalary() * percent / 100);
             }
         }
 
@@ -294,9 +328,15 @@ public class Main {
 
         System.out.println("Сотрудники отела №" + departmentNumber);
         for (Employee employee : getEmployeesFromDepartment(employees,departmentNumber)) {
-            System.out.println("Сотрудник: " + "id " + employee.getId() + ", " + employee.getLastName() + " " +
-                    employee.getFirstName() + " " + employee.getMiddleName() + ", " +
-                    ", получает " + employee.getSalary());
+
+            if (employee != null) {
+
+                System.out.println("Сотрудник: " + "id " + employee.getId() + ", " + employee.getLastName() + " " +
+                        employee.getFirstName() + " " + employee.getMiddleName() + ", " +
+                        ", получает " + employee.getSalary());
+
+            }
+
         }
     }
 
@@ -318,7 +358,7 @@ public class Main {
     /*
     Возвращает всех сотрудников с зарплатой меньше числа.
      */
-    private static Employee[] getEmployeesWithLessSalary(Employee[] employees, int salary) {
+    private static Employee[] getEmployeesWithLessSalary(Employee[] employees, double salary) {
 
         Employee[] employeeWithLessSalary = new Employee[employees.length];
         int index = 0;
@@ -337,14 +377,14 @@ public class Main {
     /*
     Выводит в консоль всех сотрудников с зарплатой меньше числа
      */
-    private static void printEmployeesWithLessSalary(Employee[] employees, int salary) {
-        printEmployees(getEmployeesWithLessSalary(employees, salary));
+    private static void printEmployeesWithLessSalary(Employee[] employees, double salary) {
+        printEmployeesWithIdAndSalary(getEmployeesWithLessSalary(employees, salary));
     }
 
     /*
     Возвращает всех сотрудников с зарплатой больше числа.
      */
-    private static Employee[] getEmployeesWithMoreSalary(Employee[] employees, int salary) {
+    private static Employee[] getEmployeesWithMoreSalary(Employee[] employees, double salary) {
 
         Employee[] employeeWithLessSalary = new Employee[employees.length];
         int index = 0;
@@ -363,8 +403,8 @@ public class Main {
     /*
     Выводит в консоль всех сотрудников с зарплатой меньше числа
      */
-    private static void printEmployeesWithMoreSalary(Employee[] employees, int salary) {
-        printEmployees(getEmployeesWithMoreSalary(employees, salary));
+    private static void printEmployeesWithMoreSalary(Employee[] employees, double salary) {
+        printEmployeesWithIdAndSalary(getEmployeesWithMoreSalary(employees, salary));
     }
 
 }
