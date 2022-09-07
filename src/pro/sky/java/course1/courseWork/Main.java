@@ -287,6 +287,19 @@ public class Main {
         indexingSalary(getEmployeesFromDepartment(employees, departmentNumber), percent);
     }
 
+    /*
+    Печатает всю информацию, кроме номера отдела, о сотрудниках отдела
+     */
+    private static void printEmployeesWithAllInfo(Employee[] employees, int departmentNumber) {
+
+        System.out.println("Сотрудники отела №" + departmentNumber);
+        for (Employee employee : getEmployeesFromDepartment(employees,departmentNumber)) {
+            System.out.println("Сотрудник: " + "id " + employee.getId() + ", " + employee.getLastName() + " " +
+                    employee.getFirstName() + " " + employee.getMiddleName() + ", " +
+                    ", получает " + employee.getSalary());
+        }
+    }
+
 
 
 }
