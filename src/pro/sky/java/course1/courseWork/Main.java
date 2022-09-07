@@ -217,4 +217,18 @@ public class Main {
         return -1;
     }
 
+    /*
+    Индексирует зарплату на указанный процент
+     */
+    private static void indexingSalary(Employee[] employees, int percent) {
+
+        for (Employee employee : employees) {
+
+            if (employee != null) {
+                employee.setSalary(employee.getSalary() * percent / 100);
+            }
+        }
+
+    }
+
 }
