@@ -273,4 +273,14 @@ public class Main {
         return getMothSpending(getEmployeesFromDepartment(employees, departmentNumber));
     }
 
+    /*
+    Возвращает среднюю зарплату в месяц в указанном отделе
+     */
+    private static double getAverageSalary(Employee[] employees, int departmentNumber) {
+        return  getAverageSalary(getEmployeesFromDepartment(employees, departmentNumber));
+    }
+
+
+
+
 }
