@@ -300,6 +300,47 @@ public class Main {
         }
     }
 
+    /*
+    Выводит в консоль список сотрудников (id, Ф. И. О. и зарплата)
+     */
+    private static void printEmployeesWithIdAndSalary(Employee[] employees) {
+
+        for (Employee employee : employees) {
+
+            if (employee != null) {
+                System.out.println(employee.getId() + ", " + employee.getLastName() + " " + employee.getFirstName() + " " +
+                        employee.getMiddleName() + " получает " + employee.getSalary());
+            }
+
+        }
+    }
+
+    /*
+    Возвращает всех сотрудников с зарплатой меньше числа.
+     */
+    private static Employee[] getEmployeesWithLessSalary(Employee[] employees, int salary) {
+
+        Employee[] employeeWithLessSalary = new Employee[employees.length];
+        int index = 0;
+
+        for (Employee employee : employees) {
+
+            if (employee != null && employee.getSalary() < salary) {
+                employeeWithLessSalary[index] = employee;
+                index++;
+            }
+        }
+
+        return employeeWithLessSalary;
+    }
+
+    /*
+    Выводит в консоль всех сотрудников с зарплатой меньше числа
+     */
+    private static void printEmployeesWithLessSalary(Employee[] employees, int salary) {
+        printEmployees(getEmployeesWithLessSalary(employees, salary));
+    }
+
 
 
 }
