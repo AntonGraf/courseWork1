@@ -6,6 +6,22 @@ public class Main {
         minimalLevel();
     }
 
+    private static Employee[] fillEmployees() {
+        int employeesSize = 10;
+        Employee[] employees = new Employee[employeesSize];
+
+        employees[0] = new Employee("Иванов", "Иван", "Иванович", 5,
+                90_000);
+        employees[1] = new Employee("Сидоров", "Сергей", "Петрович", 4,
+                110_000);
+        employees[2] = new Employee("Петров", "Петр", "Петрович", 5,
+                95_000);
+        employees[3] = new Employee("Смирнова", "Мария", "Ивановна", 6,
+                97_000);
+
+        return employees;
+    }
+
     /*
     1. Создать класс Employee, который содержит информацию о Ф.И.О., отделе и зарплате сотрудника. Отделы для простоты
     должны быть названы от 1 до 5.
@@ -28,17 +44,7 @@ public class Main {
      */
     private static void minimalLevel() {
 
-        int employeesSize = 10;
-        Employee[] employees = new Employee[employeesSize];
-
-        employees[0] = new Employee("Иванов", "Иван", "Иванович", 5,
-                90_000);
-        employees[1] = new Employee("Сидоров", "Сергей", "Петрович", 4,
-                110_000);
-        employees[2] = new Employee("Петров", "Петр", "Петрович", 5,
-                95_000);
-        employees[3] = new Employee("Смирнова", "Мария", "Ивановна", 6,
-                97_000);
+        Employee[] employees = fillEmployees();
 
         printEmployeesWithAllInfo(employees);
         System.out.printf("Сумма затрат в месяц: %.2f\n", getMothSpending(employees));
