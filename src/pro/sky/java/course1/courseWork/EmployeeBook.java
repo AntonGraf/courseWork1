@@ -26,6 +26,21 @@ public class EmployeeBook {
     }
 
     /*
+    Считает среднее значение зарплат
+     */
+    public double getAverageSalary() {
+
+        int countEmployees = getCountEmployees();
+
+        if (countEmployees > 0) {
+            return getMothSpending() / countEmployees;
+        } else {
+            return 0;
+        }
+
+    }
+
+    /*
     Находит сотрудника с минимальной зарплатой
      */
     public Employee getEmployeeWithMinSalary() throws EmployeeNotFoundException {
@@ -100,6 +115,22 @@ public class EmployeeBook {
         }
 
         throw new EmployeeNotFoundException("Нет сотрудников в массиве");
+    }
+
+    /*
+    Подсчитывает сколько сотрудников действительно в массиве
+     */
+    public int getCountEmployees() {
+
+        int count = 0;
+
+        for (Employee employee : employees) {
+            if (employee != null) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     @Override
