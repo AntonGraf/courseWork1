@@ -118,11 +118,26 @@ public class EmployeeBook {
         }
     }
 
+    /*
+    Добавляет сотрудника в список
+     */
+    public void addEmployee(Employee employee) {
 
+        try {
+
+            employees[getFirstFreeElement()] = employee;
+
+        } catch (ArrayIsFullExceptions e) {
+
+            increaseEmployeesArray();
+            addEmployee(employee);
+
+        }
+    }
     /*
     Находит индекс первой пустой ячейки.
      */
-    private int getFirstFreeElement(Employee[] employees) throws ArrayIsFullExceptions {
+    private int getFirstFreeElement() throws ArrayIsFullExceptions {
 
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] == null) {
