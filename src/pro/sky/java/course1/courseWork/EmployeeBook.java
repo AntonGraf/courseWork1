@@ -116,14 +116,6 @@ public class EmployeeBook {
     /*
     Выводит в консоль список сотрудников (id, Ф. И. О. и зарплата)
      */
-    public void printEmployeesWithIdAndSalary() {
-
-        printEmployeesWithIdAndSalary(employees);
-    }
-
-    /*
-    Выводит в консоль список сотрудников (id, Ф. И. О. и зарплата)
-     */
     public void printEmployeesWithIdAndSalary(Employee[] employees) {
 
         for (Employee employee : employees) {
@@ -306,7 +298,9 @@ public class EmployeeBook {
     public void printEmployeesByDepartments() {
 
         for (int departmentNumber : getDepartmentsArray()) {
-            printEmployees(departmentNumber);
+            if (departmentNumber != 0) {
+                printEmployees(departmentNumber);
+            }
         }
 
     }
@@ -378,13 +372,6 @@ public class EmployeeBook {
 
         throw new ArrayIsFullExceptions("Нет свободных ячеек в массиве");
 
-    }
-
-    /*
-    Увеличивает размер массива на указанное число
-     */
-    private void increaseEmployeesArray(int sizeToIncrease) {
-        employees = Arrays.copyOf(employees,employees.length + sizeToIncrease);
     }
 
     /*
@@ -542,7 +529,7 @@ public class EmployeeBook {
     @Override
     public String toString() {
 
-        StringBuilder resultString = new StringBuilder("Список сотрудников:");
+        StringBuilder resultString = new StringBuilder("Список сотрудников:\n");
 
         for (Employee employee : employees) {
 

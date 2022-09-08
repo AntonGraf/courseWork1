@@ -26,7 +26,6 @@ public class Main {
 
         EmployeeBook employeeBook = new EmployeeBook();
 
-
         employeeBook.addEmployee(new Employee("Иванов", "Иван", "Иванович",
                 5,90_000, employeeBook.generateId()));
         employeeBook.addEmployee(new Employee("Сидоров", "Сергей", "Петрович",
@@ -37,6 +36,42 @@ public class Main {
                 6, 97_000, employeeBook.generateId()));
 
         middleLevel(employeeBook);
+        printSeparator();
+
+        System.out.println("Курсовая сложного уровня");
+
+        System.out.println("Пункт 4.1 Добавление сотрудника");
+        employeeBook.addEmployee(new Employee("Семенов", "Семен", "Семенович",
+                5, 195_000, employeeBook.generateId()));
+        System.out.println(employeeBook);
+        printSeparator();
+
+        System.out.println("Пункт 4.2а Удаление сотрудника по Ф. И. О.");
+        employeeBook.deleteEmployee("Иванов", "Иван", "Иванович");
+        System.out.println(employeeBook);
+        printSeparator();
+
+        System.out.println("Пункт 4.2б Удаление сотрудника по id");
+        employeeBook.deleteEmployee(2);
+        System.out.println(employeeBook);
+        printSeparator();
+
+        System.out.println("Пункт 5 Изменить зарплату и отдел сотруднику");
+        employeeBook.setEmployeeSalary("Семенов", "Семен", "Семенович", 130_000);
+        employeeBook.setEmployeeDepartment("Семенов", "Семен", "Семенович",
+                6);
+        System.out.println(employeeBook);
+        System.out.println("Второй вариант изменения зарплаты и отдела");
+        employeeBook.setEmployeeDepartmentAndSalary("Семенов", "Семен", "Семенович",
+                4,140_000);
+        System.out.println(employeeBook);
+        printSeparator();
+
+        System.out.println("Пункт 6 Вывести список сотрудников по отделам");
+        employeeBook.printEmployeesByDepartments();
+        printSeparator();
+
+        employeeBook.printEmployees();
     }
 
     private static void middleLevel(EmployeeBook employeeBook) {
@@ -50,12 +85,13 @@ public class Main {
         System.out.println("Данные сотрудников после повышения зарплат");
         employeeBook.indexingSalary(10);
         System.out.println(employeeBook);
+        printSeparator();
 
-        System.out.println("======================");
         System.out.println("Пункт 2");
 
         int departmentNumber = 5;
         System.out.println("Данные по отделу №" + departmentNumber);
+        employeeBook.printEmployeesWithAllInfo(departmentNumber);
 
         try {
             System.out.printf("Сотрудник с минимальной зарплатой: %s \n",
@@ -71,8 +107,8 @@ public class Main {
         System.out.println("Данные сотрудников после повышения зарплат");
         employeeBook.indexingSalary(5, departmentNumber);
         employeeBook.printEmployees(departmentNumber);
+        printSeparator();
 
-        System.out.println("======================");
         System.out.println("Пункт 3");
 
         double salary = 106_000;
@@ -81,5 +117,9 @@ public class Main {
 
         System.out.printf("Список сотрудников с зарплатой выше %.2f:\n", salary);
         employeeBook.printEmployeesWithMoreSalary(salary);
+    }
+
+    private static void printSeparator() {
+        System.out.println("===========================");
     }
 }
