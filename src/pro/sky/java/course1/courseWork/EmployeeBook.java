@@ -307,6 +307,24 @@ public class EmployeeBook {
         return  employeesDepartment;
     }
 
+    /*
+    Создает хранилище сотрудников только указанного отдела
+     */
+    private EmployeeBook createDepartmentEmployeeBook(int departmentNumber) {
+
+        EmployeeBook departmentEmployeeBook = new EmployeeBook();
+
+        for (Employee employee : getEmployeesFromDepartment(departmentNumber)) {
+
+            if (employee.getDepartmentNumber() == departmentNumber) {
+                departmentEmployeeBook.addEmployee(employee);
+            }
+
+        }
+
+        return departmentEmployeeBook;
+    }
+
     @Override
     public String toString() {
 
