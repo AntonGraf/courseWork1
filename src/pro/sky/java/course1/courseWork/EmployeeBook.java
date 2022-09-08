@@ -4,10 +4,20 @@ import java.util.Arrays;
 
 public class EmployeeBook {
 
+    //Размер массива при старте
+    private static final int EMPLOYEE_BOOK_SIZE = 10;
     //Список сотрудников
     private Employee[] employees;
     //Счетчик
-    private int counter = 0;
+    private int counter;
+
+
+    public EmployeeBook() {
+
+        employees = new Employee[EMPLOYEE_BOOK_SIZE];
+        counter = 0;
+
+    }
 
     /*
     Считает сумму затрат на зарплаты в месяц.
@@ -108,6 +118,14 @@ public class EmployeeBook {
      */
     public void printEmployeesWithIdAndSalary() {
 
+        printEmployeesWithIdAndSalary(employees);
+    }
+
+    /*
+    Выводит в консоль список сотрудников (id, Ф. И. О. и зарплата)
+     */
+    public void printEmployeesWithIdAndSalary(Employee[] employees) {
+
         for (Employee employee : employees) {
 
             if (employee != null) {
@@ -117,7 +135,6 @@ public class EmployeeBook {
 
         }
     }
-
     /*
     Добавляет сотрудника в список
      */
@@ -295,6 +312,20 @@ public class EmployeeBook {
     }
 
     /*
+    Выводит в консоль всех сотрудников с зарплатой меньше числа
+     */
+    public void printEmployeesWithLessSalary(double salary) {
+        printEmployeesWithIdAndSalary(getEmployeesWithLessSalary(salary));
+    }
+
+    /*
+    Выводит в консоль всех сотрудников с зарплатой меньше числа
+     */
+    public void printEmployeesWithMoreSalary(double salary) {
+        printEmployeesWithIdAndSalary(getEmployeesWithMoreSalary(salary));
+    }
+
+    /*
     Находит сотрудника по Фамилии Имени Отчеству
      */
     private int findIndexEmployee(String lastName, String firstName, String middleName)
@@ -423,7 +454,7 @@ public class EmployeeBook {
 
         for (Employee employee : getEmployeesFromDepartment(departmentNumber)) {
 
-            if (employee.getDepartmentNumber() == departmentNumber) {
+            if (employee != null && employee.getDepartmentNumber() == departmentNumber) {
                 departmentEmployeeBook.addEmployee(employee);
             }
 
@@ -444,6 +475,10 @@ public class EmployeeBook {
         for (Employee employee : employees) {
 
             if (employee != null && !isDepartmentNumberInArray(employee.getDepartmentNumber(),departments)) {
+
+                if (departments.length <= indexDepartments ) {
+                    departments = Arrays.copyOf(departments, departments.length + 1);
+                }
 
                 departments[indexDepartments] = employee.getDepartmentNumber();
                 indexDepartments++;
@@ -466,6 +501,44 @@ public class EmployeeBook {
         return false;
     }
 
+    /*
+    Возвращает всех сотрудников с зарплатой меньше числа.
+     */
+    private Employee[] getEmployeesWithLessSalary(double salary) {
+
+        Employee[] employeeWithLessSalary = new Employee[employees.length];
+        int index = 0;
+
+        for (Employee employee : employees) {
+
+            if (employee != null && employee.getSalary() < salary) {
+                employeeWithLessSalary[index] = employee;
+                index++;
+            }
+        }
+
+        return employeeWithLessSalary;
+    }
+
+    /*
+    Возвращает всех сотрудников с зарплатой больше числа.
+     */
+    private Employee[] getEmployeesWithMoreSalary(double salary) {
+
+        Employee[] employeeWithLessSalary = new Employee[employees.length];
+        int index = 0;
+
+        for (Employee employee : employees) {
+
+            if (employee != null && employee.getSalary() >= salary) {
+                employeeWithLessSalary[index] = employee;
+                index++;
+            }
+        }
+
+        return employeeWithLessSalary;
+    }
+
     @Override
     public String toString() {
 
@@ -474,7 +547,7 @@ public class EmployeeBook {
         for (Employee employee : employees) {
 
             if (employee != null) {
-                resultString.append(employee);
+                resultString.append(employee).append("\n");
             }
 
         }
