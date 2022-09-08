@@ -31,5 +31,10 @@ public class EmployeeBook {
         employees = Arrays.copyOf(employees,employees.length + sizeToIncrease);
     }
 
-
+    /*
+    Увеличивает размер массива на 1
+     */
+    private void increaseEmployeesArray() {
+        employees = Arrays.copyOf(employees,employees.length + 1);
+    }
 }
