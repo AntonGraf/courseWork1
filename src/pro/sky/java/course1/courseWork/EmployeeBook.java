@@ -10,6 +10,21 @@ public class EmployeeBook {
     private int counter = 0;
 
     /*
+    Выводит в консоль значения всех полей (toString)
+     */
+    public void printEmployeesWithAllInfo() {
+
+        System.out.println("Полная информация о сотрудниках: ");
+
+        for (Employee employee : employees) {
+
+            if (employee != null) {
+                System.out.println(employee);
+            }
+        }
+    }
+
+    /*
     Находит индекс первой пустой ячейки.
      */
     private int getFirstFreeElement(Employee[] employees) throws ArrayIsFullExceptions {
