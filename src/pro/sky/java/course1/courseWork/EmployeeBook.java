@@ -129,6 +129,8 @@ public class EmployeeBook {
 
         } catch (ArrayIsFullExceptions e) {
 
+            System.out.println(e.getMessage());
+            System.out.println("Увеличиваем массив");
             increaseEmployeesArray();
             addEmployee(employee);
 
@@ -136,18 +138,31 @@ public class EmployeeBook {
     }
 
     /*
+    Удаляет сотрудника по имени и фамилии
+     */
+    public void deleteEmployee(String lastName, String firstName, String middleName) {
+
+        try {
+            employees[getIndexEmployeeByName(lastName, firstName, middleName)] = null;
+        } catch (EmployeeNotFoundException e) {
+            System.out.println("Не удается удалить сотрудника \n" + e.getMessage());
+        }
+
+    }
+
+    /*
     Находит сотрудника по Фамилии Имени Отчеству
      */
-    private Employee getEmployeeByName(String lastName, String firstName, String middleName)
+    private int getIndexEmployeeByName(String lastName, String firstName, String middleName)
             throws EmployeeNotFoundException {
 
-        for (Employee employee : employees) {
+        for (int i = 0; i < employees.length; i++) {
 
-            if(employee.getLastName().equals(lastName) &&
-                    employee.getFirstName().equals(firstName) &&
-                    employee.getMiddleName().equals(middleName)) {
+            if(employees[i] != null && employees[i].getLastName().equals(lastName) &&
+                    employees[i].getFirstName().equals(firstName) &&
+                    employees[i].getMiddleName().equals(middleName)) {
 
-                return employee;
+                return i;
             }
         }
 
@@ -159,14 +174,14 @@ public class EmployeeBook {
     /*
     Находит сотрудника по id
      */
-    private Employee getEmployeeByName(int id)
+    private int getIndexEmployeeById(int id)
             throws EmployeeNotFoundException {
 
-        for (Employee employee : employees) {
+        for (int i = 0; i < employees.length; i++) {
 
-            if(employee.getId() == id) {
+            if(employees[i] != null && employees[i].getId() == id) {
 
-                return employee;
+                return i;
             }
         }
 
