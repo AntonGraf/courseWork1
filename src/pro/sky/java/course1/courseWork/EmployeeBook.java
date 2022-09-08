@@ -10,6 +10,22 @@ public class EmployeeBook {
     private int counter = 0;
 
     /*
+    Считает сумму затрат на зарплаты в месяц.
+     */
+    public double getMothSpending() {
+
+        double sum = 0;
+
+        for (Employee employee : employees) {
+            if (employee != null) {
+                sum += employee.getSalary();
+            }
+        }
+
+        return sum;
+    }
+
+    /*
     Находит индекс первой пустой ячейки.
      */
     private int getFirstFreeElement(Employee[] employees) throws ArrayIsFullExceptions {
