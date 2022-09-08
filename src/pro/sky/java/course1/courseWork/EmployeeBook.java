@@ -90,6 +90,20 @@ public class EmployeeBook {
     }
 
     /*
+    Индексирует зарплату на указанный процент
+     */
+    public void indexingSalary(int percent) {
+
+        for (Employee employee : employees) {
+
+            if (employee != null) {
+                employee.setSalary(employee.getSalary() + employee.getSalary() * percent / 100);
+            }
+        }
+
+    }
+
+    /*
     Находит индекс первой пустой ячейки.
      */
     private int getFirstFreeElement(Employee[] employees) throws ArrayIsFullExceptions {
