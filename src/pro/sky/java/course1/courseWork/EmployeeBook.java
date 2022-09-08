@@ -199,6 +199,70 @@ public class EmployeeBook {
     }
 
     /*
+    Возвращает сотрудника с максимальной зарплатой в отделе
+     */
+    public Employee getEmployeeWithMaxSalary(int departmentNumber) throws EmployeeNotFoundException {
+
+        EmployeeBook departmentEmployeeBook = this.createDepartmentEmployeeBook(departmentNumber);
+
+        return departmentEmployeeBook.getEmployeeWithMaxSalary();
+    }
+
+    /*
+    Возвращает сумму затрат на месяц в указанном отделе
+     */
+    public double getMothSpending(int departmentNumber) {
+
+        EmployeeBook departmentEmployeeBook = this.createDepartmentEmployeeBook(departmentNumber);
+
+        return departmentEmployeeBook.getMothSpending();
+    }
+
+    /*
+    Возвращает среднюю зарплату в месяц в указанном отделе
+     */
+    public double getAverageSalary(int departmentNumber) {
+
+        EmployeeBook departmentEmployeeBook = this.createDepartmentEmployeeBook(departmentNumber);
+
+        return  departmentEmployeeBook.getAverageSalary();
+    }
+
+    /*
+    Индексирует зарплату на указанный процент
+     */
+    public void indexingSalary(int percent, int departmentNumber) {
+
+
+        for (Employee employee : employees) {
+
+            if (employee != null && employee.getDepartmentNumber() == departmentNumber) {
+                employee.setSalary(employee.getSalary() + (employee.getSalary() * percent / 100));
+            }
+        }
+
+    }
+
+    /*
+    Печатает всю информацию, кроме номера отдела, о сотрудниках отдела
+     */
+    public void printEmployeesWithAllInfo(int departmentNumber) {
+
+        System.out.println("Сотрудники отела №" + departmentNumber);
+        for (Employee employee : getEmployeesFromDepartment(departmentNumber)) {
+
+            if (employee != null) {
+
+                System.out.println("Сотрудник: " + "id " + employee.getId() + ", " + employee.getLastName() + " " +
+                        employee.getFirstName() + " " + employee.getMiddleName() + ", " +
+                        ", получает " + employee.getSalary());
+
+            }
+
+        }
+    }
+
+    /*
     Находит сотрудника по Фамилии Имени Отчеству
      */
     private int findIndexEmployee(String lastName, String firstName, String middleName)
