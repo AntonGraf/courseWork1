@@ -187,6 +187,17 @@ public class EmployeeBook {
     public int generateId() {
         return counter++;
     }
+
+    /*
+    Возвращает сотрудника с минимальной зарплатой в отделе
+     */
+    public Employee getEmployeeWithMinSalary(int departmentNumber) throws EmployeeNotFoundException {
+
+        EmployeeBook departmentEmployeeBook = this.createDepartmentEmployeeBook(departmentNumber);
+
+        return departmentEmployeeBook.getEmployeeWithMinSalary();
+    }
+
     /*
     Находит сотрудника по Фамилии Имени Отчеству
      */
