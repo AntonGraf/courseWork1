@@ -1,5 +1,7 @@
 package pro.sky.java.course1.courseWork;
 
+import java.util.Arrays;
+
 public class EmployeeBook {
 
     //Список сотрудников
@@ -10,7 +12,7 @@ public class EmployeeBook {
     /*
     Находит индекс первой пустой ячейки.
      */
-    private static int getFirstFreeElement(Employee[] employees) throws ArrayIsFullExceptions {
+    private int getFirstFreeElement(Employee[] employees) throws ArrayIsFullExceptions {
 
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] == null) {
@@ -21,4 +23,13 @@ public class EmployeeBook {
         throw new ArrayIsFullExceptions("Нет свободных ячеек в массиве");
 
     }
+
+    /*
+    Увеличивает размер массива на указанное число
+     */
+    private void increaseEmployeesArray(int sizeToIncrease) {
+        employees = Arrays.copyOf(employees,employees.length + sizeToIncrease);
+    }
+
+
 }
