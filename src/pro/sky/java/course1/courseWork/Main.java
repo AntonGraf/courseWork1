@@ -3,6 +3,7 @@ package pro.sky.java.course1.courseWork;
 public class Main {
     public static void main(String[] args) {
 
+        maximalLevel();
     }
 
     /*
@@ -23,5 +24,62 @@ public class Main {
      */
     private static void maximalLevel() {
 
+        EmployeeBook employeeBook = new EmployeeBook();
+
+
+        employeeBook.addEmployee(new Employee("Иванов", "Иван", "Иванович",
+                5,90_000, employeeBook.generateId()));
+        employeeBook.addEmployee(new Employee("Сидоров", "Сергей", "Петрович",
+                4, 110_000, employeeBook.generateId()));
+        employeeBook.addEmployee(new Employee("Петров", "Петр", "Петрович",
+                5, 95_000, employeeBook.generateId()));
+        employeeBook.addEmployee(new Employee("Смирнова", "Мария", "Ивановна",
+                6, 97_000, employeeBook.generateId()));
+
+        middleLevel(employeeBook);
+    }
+
+    private static void middleLevel(EmployeeBook employeeBook) {
+
+        System.out.println("Из курсовой повышенного уровня.");
+        System.out.println("Пункт 1");
+
+        System.out.println("Данные сотрудников до повышения зарплат");
+        System.out.println(employeeBook);
+
+        System.out.println("Данные сотрудников после повышения зарплат");
+        employeeBook.indexingSalary(10);
+        System.out.println(employeeBook);
+
+        System.out.println("======================");
+        System.out.println("Пункт 2");
+
+        int departmentNumber = 5;
+        System.out.println("Данные по отделу №" + departmentNumber);
+
+        try {
+            System.out.printf("Сотрудник с минимальной зарплатой: %s \n",
+                    employeeBook.getEmployeeWithMinSalary(departmentNumber));
+            System.out.printf("Сотрудник с максимальной зарплатой: %s \n",
+                    employeeBook.getEmployeeWithMaxSalary(departmentNumber));
+        } catch (EmployeeNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.printf("Сумма затрат в месяц: %.2f\n", employeeBook.getMothSpending(departmentNumber));
+        System.out.printf("Средняя зарплата: %.2f\n", employeeBook.getAverageSalary(departmentNumber));
+        System.out.println("Данные сотрудников после повышения зарплат");
+        employeeBook.indexingSalary(5, departmentNumber);
+        employeeBook.printEmployees(departmentNumber);
+
+        System.out.println("======================");
+        System.out.println("Пункт 3");
+
+        double salary = 106_000;
+        System.out.printf("Список сотрудников с зарплатой ниже %.2f:\n", salary);
+        employeeBook.printEmployeesWithLessSalary(salary);
+
+        System.out.printf("Список сотрудников с зарплатой выше %.2f:\n", salary);
+        employeeBook.printEmployeesWithMoreSalary(salary);
     }
 }
