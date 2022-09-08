@@ -143,7 +143,20 @@ public class EmployeeBook {
     public void deleteEmployee(String lastName, String firstName, String middleName) {
 
         try {
-            employees[getIndexEmployeeByName(lastName, firstName, middleName)] = null;
+            employees[findIndexEmployee(lastName, firstName, middleName)] = null;
+        } catch (EmployeeNotFoundException e) {
+            System.out.println("Не удается удалить сотрудника \n" + e.getMessage());
+        }
+
+    }
+
+    /*
+    Удаляет сотрудника по имени и фамилии
+     */
+    public void deleteEmployee(int id) {
+
+        try {
+            employees[findIndexEmployee(id)] = null;
         } catch (EmployeeNotFoundException e) {
             System.out.println("Не удается удалить сотрудника \n" + e.getMessage());
         }
@@ -153,7 +166,7 @@ public class EmployeeBook {
     /*
     Находит сотрудника по Фамилии Имени Отчеству
      */
-    private int getIndexEmployeeByName(String lastName, String firstName, String middleName)
+    private int findIndexEmployee(String lastName, String firstName, String middleName)
             throws EmployeeNotFoundException {
 
         for (int i = 0; i < employees.length; i++) {
@@ -174,7 +187,7 @@ public class EmployeeBook {
     /*
     Находит сотрудника по id
      */
-    private int getIndexEmployeeById(int id)
+    private int findIndexEmployee(int id)
             throws EmployeeNotFoundException {
 
         for (int i = 0; i < employees.length; i++) {
