@@ -26,6 +26,26 @@ public class EmployeeBook {
     }
 
     /*
+    Находит сотрудника с минимальной зарплатой
+     */
+    public Employee getEmployeeWithMinSalary() throws EmployeeNotFoundException {
+
+        int firstIndex = getFirstNotNullElement();
+
+        Employee employeeWithMinSalary;
+        employeeWithMinSalary = employees[firstIndex];
+
+        for (Employee employee : employees) {
+
+            if (employee != null &&  employee.getSalary() < employeeWithMinSalary.getSalary()) {
+                employeeWithMinSalary = employee;
+            }
+        }
+
+        return employeeWithMinSalary;
+    }
+
+    /*
     Находит индекс первой пустой ячейки.
      */
     private int getFirstFreeElement(Employee[] employees) throws ArrayIsFullExceptions {
@@ -52,6 +72,20 @@ public class EmployeeBook {
      */
     private void increaseEmployeesArray() {
         employees = Arrays.copyOf(employees,employees.length + 1);
+    }
+
+    /*
+    Находит индекс первой не пустой ячейки. Если все ячейки пусты - выводи '-1'
+     */
+    private int getFirstNotNullElement() throws EmployeeNotFoundException {
+
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null) {
+                return i;
+            }
+        }
+
+        throw new EmployeeNotFoundException("Нет сотрудников в массиве");
     }
 
     @Override
