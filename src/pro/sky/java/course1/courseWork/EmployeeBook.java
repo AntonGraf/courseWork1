@@ -273,7 +273,7 @@ public class EmployeeBook {
     /*
     Подсчитывает сколько сотрудников действительно в массиве
      */
-    public int getCountEmployees() {
+    private int getCountEmployees() {
 
         int count = 0;
 
@@ -284,6 +284,27 @@ public class EmployeeBook {
         }
 
         return count;
+    }
+
+    /*
+    Возвращает список сотрудников в указанном отделе
+     */
+    private Employee[] getEmployeesFromDepartment(int departmentNumber) {
+
+        Employee[] employeesDepartment = new Employee[employees.length];
+        int indexEmployeesDepartment = 0;
+
+        for (Employee employee : employees) {
+
+            if (employee != null && employee.getDepartmentNumber() == departmentNumber) {
+
+                employeesDepartment[indexEmployeesDepartment] = employee;
+                indexEmployeesDepartment++;
+
+            }
+        }
+
+        return  employeesDepartment;
     }
 
     @Override
