@@ -175,6 +175,15 @@ public class EmployeeBook {
         }
     }
 
+    public void setEmployeeDepartment(String lastName, String firstName, String middleName, int departmentNumber) {
+
+        try {
+            employees[findIndexEmployee(lastName, firstName, middleName)].setDepartmentNumber(departmentNumber);
+        } catch (EmployeeNotFoundException e) {
+            System.out.println("Не удается изменить отдел сотруднику \n" + e.getMessage());
+        }
+    }
+
     /*
     Находит сотрудника по Фамилии Имени Отчеству
      */
