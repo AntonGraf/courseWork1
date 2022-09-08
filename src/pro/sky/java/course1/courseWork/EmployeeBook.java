@@ -37,4 +37,20 @@ public class EmployeeBook {
     private void increaseEmployeesArray() {
         employees = Arrays.copyOf(employees,employees.length + 1);
     }
+
+    @Override
+    public String toString() {
+
+        StringBuilder resultString = new StringBuilder("Список сотрудников:");
+
+        for (Employee employee : employees) {
+
+            if (employee != null) {
+                resultString.append(employee);
+            }
+
+        }
+
+        return resultString.toString();
+    }
 }
