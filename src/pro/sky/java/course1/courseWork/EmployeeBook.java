@@ -184,6 +184,9 @@ public class EmployeeBook {
         }
     }
 
+    public int generateId() {
+        return counter++;
+    }
     /*
     Находит сотрудника по Фамилии Имени Отчеству
      */
