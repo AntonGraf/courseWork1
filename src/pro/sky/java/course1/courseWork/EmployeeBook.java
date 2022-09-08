@@ -155,6 +155,26 @@ public class EmployeeBook {
                 " не найден");
 
     }
+
+    /*
+    Находит сотрудника по id
+     */
+    private Employee getEmployeeByName(int id)
+            throws EmployeeNotFoundException {
+
+        for (Employee employee : employees) {
+
+            if(employee.getId() == id) {
+
+                return employee;
+            }
+        }
+
+        throw new EmployeeNotFoundException("Сотрудник с id " + id +
+                " не найден");
+
+    }
+
     /*
     Находит индекс первой пустой ячейки.
      */
