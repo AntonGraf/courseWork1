@@ -164,6 +164,18 @@ public class EmployeeBook {
     }
 
     /*
+    Устанавливает зарплату сотруднику
+     */
+    public void setEmployeeSalary(String lastName, String firstName, String middleName, double salary) {
+
+        try {
+            employees[findIndexEmployee(lastName, firstName, middleName)].setSalary(salary);
+        } catch (EmployeeNotFoundException e) {
+            System.out.println("Не удается установить зарплату сотруднику \n" + e.getMessage());
+        }
+    }
+
+    /*
     Находит сотрудника по Фамилии Имени Отчеству
      */
     private int findIndexEmployee(String lastName, String firstName, String middleName)
