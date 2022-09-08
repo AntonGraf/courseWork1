@@ -270,6 +270,30 @@ public class EmployeeBook {
         }
     }
 
+    public void printEmployees(int departmentNumber) {
+
+        System.out.println("Сотрудники отела №" + departmentNumber);
+        for (Employee employee : getEmployeesFromDepartment(departmentNumber)) {
+
+            if (employee != null) {
+
+                System.out.println("Сотрудник: " + employee.getLastName() + " " +
+                        employee.getFirstName() + " " + employee.getMiddleName());
+
+            }
+
+        }
+
+    }
+
+    public void printEmployeesByDepartments() {
+
+        for (int departmentNumber : getDepartmentsArray()) {
+            printEmployees(departmentNumber);
+        }
+
+    }
+
     /*
     Находит сотрудника по Фамилии Имени Отчеству
      */
@@ -406,6 +430,40 @@ public class EmployeeBook {
         }
 
         return departmentEmployeeBook;
+    }
+
+    /*
+    Возвращает список всех номеров отделов
+     */
+    private int[] getDepartmentsArray() {
+
+        int departmentsCount = 10;
+        int[] departments = new int[departmentsCount];
+        int indexDepartments = 0;
+
+        for (Employee employee : employees) {
+
+            if (employee != null && !isDepartmentNumberInArray(employee.getDepartmentNumber(),departments)) {
+
+                departments[indexDepartments] = employee.getDepartmentNumber();
+                indexDepartments++;
+
+            }
+        }
+        return departments;
+    }
+
+    private boolean isDepartmentNumberInArray(int searchNumber, int[] departments) {
+
+        for (int number : departments) {
+
+            if (searchNumber == number) {
+                return true;
+            }
+
+        }
+
+        return false;
     }
 
     @Override
