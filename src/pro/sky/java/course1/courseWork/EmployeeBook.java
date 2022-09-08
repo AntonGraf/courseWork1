@@ -30,10 +30,7 @@ public class EmployeeBook {
      */
     public Employee getEmployeeWithMinSalary() throws EmployeeNotFoundException {
 
-        int firstIndex = getFirstNotNullElement();
-
-        Employee employeeWithMinSalary;
-        employeeWithMinSalary = employees[firstIndex];
+        Employee employeeWithMinSalary = employees[getFirstNotNullElement()];
 
         for (Employee employee : employees) {
 
@@ -43,6 +40,23 @@ public class EmployeeBook {
         }
 
         return employeeWithMinSalary;
+    }
+
+    /*
+    Находит сотрудника с максимальной зарплатой
+     */
+    public Employee getEmployeeWithMaxSalary() throws EmployeeNotFoundException {
+
+        Employee employeeWithMaxSalary = employees[getFirstNotNullElement()];
+
+        for (Employee employee : employees) {
+
+            if (employee != null && employee.getSalary() > employeeWithMaxSalary.getSalary()) {
+                employeeWithMaxSalary = employee;
+            }
+        }
+
+        return employeeWithMaxSalary;
     }
 
     /*
