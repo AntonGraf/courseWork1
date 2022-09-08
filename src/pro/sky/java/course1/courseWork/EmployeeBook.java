@@ -184,6 +184,14 @@ public class EmployeeBook {
         }
     }
 
+    public void setEmployeeDepartmentAndSalary(String lastName, String firstName, String middleName,
+                                               int departmentNumber, double salary) {
+
+        setEmployeeDepartment(lastName, firstName, middleName, departmentNumber);
+        setEmployeeSalary(lastName, firstName, middleName, salary);
+
+    }
+
     public int generateId() {
         return counter++;
     }
