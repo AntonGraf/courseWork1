@@ -104,6 +104,22 @@ public class EmployeeBook {
     }
 
     /*
+    Выводит в консоль список сотрудников (id, Ф. И. О. и зарплата)
+     */
+    public void printEmployeesWithIdAndSalary() {
+
+        for (Employee employee : employees) {
+
+            if (employee != null) {
+                System.out.println(employee.getId() + ", " + employee.getLastName() + " " + employee.getFirstName() + " " +
+                        employee.getMiddleName() + " получает " + employee.getSalary());
+            }
+
+        }
+    }
+
+
+    /*
     Находит индекс первой пустой ячейки.
      */
     private int getFirstFreeElement(Employee[] employees) throws ArrayIsFullExceptions {
