@@ -134,6 +134,27 @@ public class EmployeeBook {
 
         }
     }
+
+    /*
+    Находит сотрудника по Фамилии Имени Отчеству
+     */
+    private Employee getEmployeeByName(String lastName, String firstName, String middleName)
+            throws EmployeeNotFoundException {
+
+        for (Employee employee : employees) {
+
+            if(employee.getLastName().equals(lastName) &&
+                    employee.getFirstName().equals(firstName) &&
+                    employee.getMiddleName().equals(middleName)) {
+
+                return employee;
+            }
+        }
+
+        throw new EmployeeNotFoundException("Сотрудник " + lastName + " " + firstName + " " + middleName +
+                " не найден");
+
+    }
     /*
     Находит индекс первой пустой ячейки.
      */
