@@ -23,7 +23,7 @@ public class Employee {
         this.middleName = middleName;
         this.departmentNumber = departmentNumber;
         this.salary = salary;
-        this.id = counter++;
+        id = counter++;
     }
 
     public String getFirstName() {
