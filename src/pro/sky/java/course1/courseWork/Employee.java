@@ -14,14 +14,16 @@ public class Employee {
     private double salary;
     //ID
     private final int id;
+    //счетчик
+    private static int counter = 0;
 
-    public Employee(String lastName, String firstName, String middleName, int departmentNumber, double salary, int id) {
+    public Employee(String lastName, String firstName, String middleName, int departmentNumber, double salary) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.middleName = middleName;
         this.departmentNumber = departmentNumber;
         this.salary = salary;
-        this.id = id;
+        this.id = counter++;
     }
 
     public String getFirstName() {

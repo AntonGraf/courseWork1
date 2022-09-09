@@ -8,14 +8,11 @@ public class EmployeeBook {
     private static final int EMPLOYEE_BOOK_SIZE = 10;
     //Список сотрудников
     private Employee[] employees;
-    //Счетчик
-    private int counter;
 
 
     public EmployeeBook() {
 
         employees = new Employee[EMPLOYEE_BOOK_SIZE];
-        counter = 0;
 
     }
 
@@ -199,10 +196,6 @@ public class EmployeeBook {
         setEmployeeDepartment(lastName, firstName, middleName, departmentNumber);
         setEmployeeSalary(lastName, firstName, middleName, salary);
 
-    }
-
-    public int generateId() {
-        return counter++;
     }
 
     /*

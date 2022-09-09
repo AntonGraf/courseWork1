@@ -27,13 +27,13 @@ public class Main {
         EmployeeBook employeeBook = new EmployeeBook();
 
         employeeBook.addEmployee(new Employee("Иванов", "Иван", "Иванович",
-                5,90_000, employeeBook.generateId()));
+                5,90_000));
         employeeBook.addEmployee(new Employee("Сидоров", "Сергей", "Петрович",
-                4, 110_000, employeeBook.generateId()));
+                4, 110_000));
         employeeBook.addEmployee(new Employee("Петров", "Петр", "Петрович",
-                5, 95_000, employeeBook.generateId()));
+                5, 95_000));
         employeeBook.addEmployee(new Employee("Смирнова", "Мария", "Ивановна",
-                6, 97_000, employeeBook.generateId()));
+                6, 97_000));
 
         middleLevel(employeeBook);
         printSeparator();
@@ -42,7 +42,7 @@ public class Main {
 
         System.out.println("Пункт 4.1 Добавление сотрудника");
         employeeBook.addEmployee(new Employee("Семенов", "Семен", "Семенович",
-                5, 195_000, employeeBook.generateId()));
+                5, 195_000));
         System.out.println(employeeBook);
         printSeparator();
 
